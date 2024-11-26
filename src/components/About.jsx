@@ -1,11 +1,12 @@
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import React from "react";
+import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/all";
+import AnimatedTitle from "./AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
-  useGSAP(() => {
+  useEffect(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: "#clip",
@@ -22,7 +23,13 @@ const About = () => {
       height: "100vh",
       borderRadius: 0,
     });
-  });
+
+    return () => {
+      // Clean up ScrollTrigger on component unmount
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
@@ -30,10 +37,10 @@ const About = () => {
           Welcome to Zentry
         </h2>
 
-        <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
-          Disc<b className="text-violet-500">O</b>ver the World's <br /> l
-          <b className="text-violet-500">a</b>rgest shared Adventure,
-        </div>
+        <AnimatedTitle
+          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
+          containerClass="mt-5 !text-black text-center"
+        />
 
         <div className="about-subtext">
           <p>The Game of Games begins-your life, now an epic MMORPG</p>
