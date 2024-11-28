@@ -131,7 +131,7 @@ const Hero = () => {
           {/* Autoplay current video */}
           <video
             src={getVideoSrc(currentIndex)}
-            // autoPlay
+            autoPlay
             loop
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
