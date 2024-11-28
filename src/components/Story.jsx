@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const Story = () => {
   return (
-    <div>Story</div>
-  )
-}
+    <section id="story" className="min-h-dvh w-screen bg-black text-blue-50">
+      <div className="flex size-full flex-col items-center py-10 pb-24">
+        <p>The multiversal ip World</p>
+      </div>
+    </section>
+  );
+};
 
-export default Story
+export default Story;
